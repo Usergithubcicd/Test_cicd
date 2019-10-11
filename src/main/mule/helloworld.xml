@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="27f5ae4e-b29a-4c3a-b43b-fc0dbc941db7" >
+		<http:listener-connection host="localhost" port="8081" />
+	</http:listener-config>
+	<flow name="helloworldFlow" doc:id="10eb3d92-9f77-42fa-b343-fb1c203847d9" >
+		<http:listener doc:name="Listener" doc:id="dad0db0f-299f-45df-9d77-71fd7a90ed4d" config-ref="HTTP_Listener_config" path="/helloworld"/>
+		<logger level="INFO" doc:name="IntialLogger" doc:id="abfadb1a-19b7-49fc-a1a7-2bb9e5327b07" message="Flow has been invoked....."/>
+		<set-payload value='#["Welcome to the Mulesoft....."]' doc:name="Set Payload" doc:id="21a1003f-5bb9-4847-9820-b71d35921f1c" />
+		<logger level="INFO" doc:name="End Logger" doc:id="61cc8f23-da99-4e09-b34b-8c06adbbfc3e" message="Flow has been ended.."/>
+	</flow>
+</mule>

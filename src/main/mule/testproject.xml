@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="25b8ef96-9a34-4054-a2f7-21baa1b45c34" >
+		<http:listener-connection host="localhost" port="8081" />
+	</http:listener-config>
+	<flow name="testprojectFlow" doc:id="2604a670-e3e5-4778-9960-9835c98049a5" >
+		<http:listener doc:name="Listener" doc:id="a6c44200-ac6d-4ac2-b958-23e9556fa73a" config-ref="HTTP_Listener_config" path="/maventest"/>
+		<logger level="INFO" doc:name="Logger" doc:id="79a986ff-e8e1-4688-b464-240f4397008a" message="Maven Test is invoked...!!!!"/>
+		<set-payload value="' Maventest Completed Successfully'" doc:name="Set Payload" doc:id="c589a754-a617-4d7b-a120-547506d813b5" />
+	</flow>
+</mule>
